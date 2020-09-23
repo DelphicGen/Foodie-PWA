@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import {createRestaurantTemplate} from '../templates/template-creator';
 
@@ -28,10 +29,15 @@ const Home = {
   async afterRender() {
     const restaurants = await RestaurantDbSource.getRestaurant();
     const restaurantsInner = document.querySelector('.restaurants__inner');
-    
-    restaurants.forEach((restaurant) => {
-      restaurantsInner.innerHTML += createRestaurantTemplate(restaurant);
-    });
+    const mainContent = document.querySelector('#mainContent');
+
+    if (restaurants) {
+      restaurants.forEach((restaurant) => {
+        restaurantsInner.innerHTML += createRestaurantTemplate(restaurant);
+      });
+    } else {
+      mainContent.innerHTML = '<h4 class="loadingIndicator">Failed to Load Data</h4>';
+    }
   },
 };
 
