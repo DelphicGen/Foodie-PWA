@@ -22,23 +22,39 @@ class App {
     // kita bisa menginisiasikan komponen lain bila ada
   }
 
-  scrollEvent() {
-    return () => {
-      if (window.scrollY > 0) {
-        this._navbar.classList.add('scrolled');
-        this._skipToContent.classList.add('scrolled--2');
-      } else {
-        this._navbar.classList.remove('scrolled');
-        this._skipToContent.classList.remove('scrolled--2');
-      }
-    };
-  }
+  // scrollEvent() {
+  //   return () => {
+  //     if (window.scrollY > 0) {
+  //       this._navbar.classList.add('scrolled');
+  //       this._skipToContent.classList.add('scrolled--2');
+  //     } else {
+  //       this._navbar.classList.remove('scrolled');
+  //       this._skipToContent.classList.remove('scrolled--2');
+  //     }
+  //   };
+  // }
 
   setNavbarAndSkipToContent(url) {
     if (url === '/home' || url === '/' || url === '/restaurants') {
-      window.addEventListener('scroll', this.scrollEvent);
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+          this._navbar.classList.add('scrolled');
+          this._skipToContent.classList.add('scrolled--2');
+        } else {
+          this._navbar.classList.remove('scrolled');
+          this._skipToContent.classList.remove('scrolled--2');
+        }
+      });
     } else {
-      window.removeEventListener('scroll', this.scrollEvent);
+      window.removeEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+          this._navbar.classList.add('scrolled');
+          this._skipToContent.classList.add('scrolled--2');
+        } else {
+          this._navbar.classList.remove('scrolled');
+          this._skipToContent.classList.remove('scrolled--2');
+        }
+      });
       this._navbar.classList.add('scrolled');
       this._skipToContent.classList.add('scrolled--2');
     }

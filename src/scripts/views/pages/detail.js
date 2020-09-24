@@ -17,12 +17,12 @@ const Detail = {
     const restaurant = await RestaurantDbSource.detailRestaurant(url.id);
     const restaurantDetail = document.querySelector('.restaurantDetail');
     const mainContent = document.querySelector('#mainContent');
-    const submitReview = document.querySelector('.restaurantDetail__addReviewBtn');
 
     if (restaurant) restaurantDetail.innerHTML = createRestaurantDetailTemplate(restaurant);
     else mainContent.innerHTML = '<h4 class="loadingIndicator">Failed to Load Data</h4>';
 
-    submitReview.addEventListener('click', (e) => {
+    const submitReview = document.querySelector('.restaurantDetail__addReviewBtn');
+    submitReview && submitReview.addEventListener('click', (e) => {
       e.preventDefault();
       const name = document.querySelector('.restaurantDetail__formName').value;
       const review = document.querySelector('.restaurantDetail__formReview').value;

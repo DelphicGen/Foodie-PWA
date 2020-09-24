@@ -5,7 +5,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
   let cuisine = '';
   let foods = '';
   let drinks = '';
-  const numOfReviews = restaurant.consumerReviews.length;
+  let reviews = '';
   restaurant.categories.forEach((category, index) => {
     if (index === 0) cuisine += category.name;
     else cuisine += ', ' + category.name;
@@ -19,8 +19,22 @@ const createRestaurantDetailTemplate = (restaurant) => {
     drinks += `<li>${drink.name}</li>`;
   });
 
+  restaurant.consumerReviews.forEach((review) => {
+    reviews += `
+      <div class="restaurantDetail__review">
+      <div class="restaurantDetail__reviewHeader">
+          <span class="restaurantDetail__reviewer">
+          ${review.name}</span>
+          <span>
+          ${review.review}</span>
+      </div>
+      <span class="restaurantDetail__reviewDate">${review.date}</span>
+  </div>
+      `;
+  });
+
   return `
-        <img class="restaurantDetail__image" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant.name}" />
+        <img class="restaurantDetail__image" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant.name}" crossorigin="anonymous" />
 
         <div class="restaurantDetail__header">
             <div class="restaurantDetail__status">
@@ -29,7 +43,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
             </div>
             <hr />
             <div class="restaurantDetail__status">
-                <span>${restaurant.address}</span>
+                <span>${restaurant.city}, ${restaurant.address}</span>
                 <span class="restaurants__rating"><span>${restaurant.rating}</span></span>
             </div>
             <hr />
@@ -49,23 +63,8 @@ const createRestaurantDetailTemplate = (restaurant) => {
             <hr />
             <div class="restaurantDetail__reviews">
                 <h4>Reviews</h4>
-                <div class="restaurantDetail__review">
-                    <div class="restaurantDetail__reviewHeader">
-                        <span class="restaurantDetail__reviewer">
-                        ${restaurant.consumerReviews[numOfReviews - 1].name}</span>
-                        <span>
-                        ${restaurant.consumerReviews[numOfReviews - 1].review}</span>
-                    </div>
-                    <span class="restaurantDetail__reviewDate">${restaurant.consumerReviews[numOfReviews - 1].date}</span>
-                </div>
-                <div class="restaurantDetail__review">
-                    <div class="restaurantDetail__reviewHeader">
-                        <span class="restaurantDetail__reviewer">
-                        ${restaurant.consumerReviews[numOfReviews - 2].name}</span>
-                        <span>
-                        ${restaurant.consumerReviews[numOfReviews - 2].review}</span>
-                    </div>
-                    <span class="restaurantDetail__reviewDate">${restaurant.consumerReviews[numOfReviews - 2].date}</span>
+                <div class="restaurantDetail__reviewsContainer">
+                    ${reviews}
                 </div>
             </div>
             <hr />
@@ -93,7 +92,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
 const createRestaurantTemplate = (restaurant) => {
   return `
         <div class="restaurants__restaurant">
-            <img class="restaurants__image" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant.name}" />
+            <img class="restaurants__image" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant.name}" crossorigin="anonymous" />
 
             <div class="restaurants__details">
                 <h3 class="restaurants__name"><a href="#/detail/${restaurant.id}">${restaurant.name}</a></h3>
