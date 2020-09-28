@@ -1,12 +1,12 @@
 import FavouriteRestaurantIdb from '../../data/favouriterestaurant-idb';
 import {createRestaurantTemplate} from '../templates/template-creator';
 
-const Favourite = {
+const Favorite = {
   async render() {
     return `
-      <section class="restaurants favourite" id="/restaurants">
+      <section class="restaurants favorite" id="/restaurants">
           <div class="container">
-              <h2 class="section__header">Your Favourite</h2>
+              <h2 class="section__header">Your Favorite</h2>
               <div class="restaurants__inner">
 
               </div>
@@ -24,4 +24,4 @@ const Favourite = {
   },
 };
 
-export default Favourite;
+export default Favorite;

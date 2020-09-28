@@ -1,13 +1,13 @@
 import Home from '../views/pages/home';
 import Detail from '../views/pages/detail';
-import Favourite from '../views/pages/favourite';
+import Favorite from '../views/pages/favorite';
 
 const routes = {
   '/': Home,
   '/home': Home,
   '/restaurants': Home,
   '/detail/:id': Detail,
-  '/favourite': Favourite,
+  '/favorite': Favorite,
 };
 
 export default routes;
