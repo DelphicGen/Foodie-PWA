@@ -2,7 +2,7 @@
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import {createRestaurantDetailTemplate} from '../templates/template-creator';
 import UrlParser from '../../routes/url-parser';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonInitiator from '../../utils/like-button-presenter';
 
 const Detail = {
   async render() {

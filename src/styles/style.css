@@ -197,7 +197,9 @@ body {
 
 /* Hero */
 .hero {
-    background-image: url("../public/heros/hero1.jpg");
+    background-image: url("../public/heros/hero1-large.jpg");
+    background: -webkit-image-set( url('../public/heros/hero1-small.jpg') 480w, url('../public/heros/hero1-large.jpg') 800w );
+    background: image-set( url('../public/heros/hero1-small.jpg') 480w, url('../public/heros/hero1-large.jpg') 800w );
     background-position: center;
     background-size: cover;
     height: fit-content;
@@ -271,7 +273,7 @@ body {
 }
 
 .restaurants__name {
-    font-size: 32px;
+    font-size: 40px;
     margin-bottom: 12px;
     height: 74px;
     cursor: pointer;

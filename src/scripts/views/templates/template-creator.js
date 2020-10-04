@@ -92,7 +92,7 @@ const createRestaurantDetailTemplate = (restaurant) => {
 const createRestaurantTemplate = (restaurant) => {
   return `
         <div class="restaurants__restaurant">
-            <img class="restaurants__image" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant.name}" crossorigin="anonymous" />
+            <img class="restaurants__image lazyload" src="${restaurant.pictureId ? CONFIG.BASE_IMAGE_URL + restaurant.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}" alt="${restaurant.name}" crossorigin="anonymous" />
 
             <div class="restaurants__details">
                 <h3 class="restaurants__name"><a href="#/detail/${restaurant.id}">${restaurant.name}</a></h3>
@@ -108,13 +108,13 @@ const createRestaurantTemplate = (restaurant) => {
 };
 
 const createLikeButtonTemplate = () => `
-  <button aria-label="like this movie" id="likeButton" class="like">
+  <button aria-label="like this restaurant" id="likeButton" class="like">
      <i class="fa fa-heart-o" aria-hidden="true"></i>
   </button>
 `;
 
 const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="likeButton" class="like">
+  <button aria-label="unlike this restaurant" id="likeButton" class="like">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;

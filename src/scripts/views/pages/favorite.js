@@ -1,4 +1,4 @@
-import FavouriteRestaurantIdb from '../../data/favouriterestaurant-idb';
+import FavouriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 import {createRestaurantTemplate} from '../templates/template-creator';
 
 const Favorite = {
@@ -18,9 +18,14 @@ const Favorite = {
   async afterRender() {
     const restaurants = await FavouriteRestaurantIdb.getAllRestaurants();
     const restaurantsInner = document.querySelector('.restaurants__inner');
-    restaurants.forEach((restaurant) => {
-      restaurantsInner.innerHTML += createRestaurantTemplate(restaurant);
-    });
+    if (!restaurants) {
+      restaurantsInner.innerHTML = 'Tidak ada restaurant untuk ditampilkan';
+    } else {
+      restaurantsInner.innerHTML = '';
+      restaurants.forEach((restaurant) => {
+        restaurantsInner.innerHTML += createRestaurantTemplate(restaurant);
+      });
+    }
   },
 };
 
