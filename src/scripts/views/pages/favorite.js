@@ -19,7 +19,7 @@ const Favorite = {
     const restaurants = await FavouriteRestaurantIdb.getAllRestaurants();
     const restaurantsInner = document.querySelector('.restaurants__inner');
     if (!restaurants) {
-      restaurantsInner.innerHTML = 'Tidak ada restaurant untuk ditampilkan';
+      restaurantsInner.innerHTML = 'No restaurant that has been marked';
     } else {
       restaurantsInner.innerHTML = '';
       restaurants.forEach((restaurant) => {
