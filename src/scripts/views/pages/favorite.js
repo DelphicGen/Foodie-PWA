@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import FavouriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 import {createRestaurantTemplate} from '../templates/template-creator';
 
@@ -19,7 +20,7 @@ const Favorite = {
     const restaurants = await FavouriteRestaurantIdb.getAllRestaurants();
     const restaurantsInner = document.querySelector('.restaurants__inner');
     if (!restaurants) {
-      restaurantsInner.innerHTML = 'Tidak ada restaurant untuk ditampilkan';
+      restaurantsInner.innerHTML = 'Belum ada restaurant yang disimpan sebagai favorite';
     } else {
       restaurantsInner.innerHTML = '';
       restaurants.forEach((restaurant) => {
