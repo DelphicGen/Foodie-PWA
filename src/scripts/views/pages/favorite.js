@@ -19,7 +19,7 @@ const Favorite = {
   async afterRender() {
     const restaurants = await FavouriteRestaurantIdb.getAllRestaurants();
     const restaurantsInner = document.querySelector('.restaurants__inner');
-    if (!restaurants) {
+    if (restaurants.length == 0) {
       restaurantsInner.innerHTML = 'Belum ada restaurant yang disimpan sebagai favorite';
     } else {
       restaurantsInner.innerHTML = '';

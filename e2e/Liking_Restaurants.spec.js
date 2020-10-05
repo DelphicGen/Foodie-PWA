@@ -37,5 +37,5 @@ Scenario('disliking one restaurant', async ({I}) => {
   I.click('#likeButton');
 
   I.amOnPage('/#/favorite');
-  I.see('Tidak ada restaurant untuk ditampilkan');
+  I.see('Belum ada restaurant yang disimpan sebagai favorite');
 });
